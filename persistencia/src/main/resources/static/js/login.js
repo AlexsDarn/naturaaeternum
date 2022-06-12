@@ -4,22 +4,13 @@ $(document).ready(function() {
 });
     console.log("culo");
 
-async function registrarUsuario(){
+async function iniciarSesion(){
 console.log("aaa");
 let datos = {};
-    datos.nombre = document.getElementById('txtNombre').value;
-    datos.apellido =document.getElementById('txtApellido').value;
     datos.email =document.getElementById('txtEmail').value;
     datos.password =document.getElementById('txtPassword').value;
 
-    let repeatPassword =document.getElementById('txtRepeatPassword').value;
-
-    if(repeatPassword != datos.password){
-        alert('Contraseñas diferentes');
-        return;
-    }
-
-    const request = await fetch('api/usuarios', {
+    const request = await fetch('api/login', {
     method: 'POST',
     headers: {
         'Accept': 'application/json',
@@ -27,4 +18,5 @@ let datos = {};
     },
         body: JSON.stringify(datos)
     });
+    const respuesta = await request.json();
 }

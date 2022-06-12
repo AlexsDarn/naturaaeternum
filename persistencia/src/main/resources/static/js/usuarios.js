@@ -17,10 +17,12 @@ async function cargarUsuarios(){
     let listadoHtml = '';
     for(let usuario of usuarios){
         let botonEliminar = '<a href="#" onclick="eliminarUsuario('+usuario.id+')" class="btn btn-danger btn-circle btn-lg"><i class="fas fa-trash"></i></a>';
-        let usuarioHtml = '<tr></tr><td>'+usuario.id+'</td><td>'
-        +usuario.nombre +' ' +usuario.apellido + '</td><td>'
-        +usuario.email+'</td><td>'+usuario.telefono+'</td><td>'+ botonEliminar +'</td></tr>'
-        listadoHtml += usuarioHtml;
+        let telefonoTexto = usuario.telefono == null ? '-' : usuario.telefono;
+
+        let usuarioHTML = '<tr></tr><td>'+ usuario.id +'</td><td>'+ usuario.nombre +' '+ usuario.apellido +'</td><td>'
+        + usuario.email +'</td><td>'+telefonoTexto
+        +'</td><td>'+ botonEliminar +'</td></tr>';
+        listadoHtml+= usuarioHTML;
     }
     document.querySelector('#usuarios tbody').outerHTML = listadoHtml;
 }
