@@ -18,5 +18,10 @@ let datos = {};
     },
         body: JSON.stringify(datos)
     });
-    const respuesta = await request.json();
+    const respuesta = await request.text();
+    if(respuesta == 'ok'){
+        window.location.href = 'usuarios.html'
+    }else{
+        alert("Credenciales incorrectas");
+    }
 }
